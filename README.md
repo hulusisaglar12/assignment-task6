@@ -36,3 +36,11 @@ When creating your app build or publishing, import your secret values to EAS run
 ```
 eas secret:push
 ```
+
+## Automated build on release
+
+A GitHub Actions workflow, defined in `.github/workflows/release-build.yml`, runs automatically every time a new release is published on this repository. It runs the unit tests first, and if they pass, builds an Android APK with EAS Build and attaches it to that same release as a downloadable file.
+
+This requires a repository secret named `EXPO_TOKEN`, set to an Expo access token for the account this project's EAS project belongs to. Add it under the repository's Settings, Secrets and variables, Actions.
+
+The build profile used is `preview`, defined in `eas.json`, which produces an installable APK instead of the Play Store `.aab` format.
