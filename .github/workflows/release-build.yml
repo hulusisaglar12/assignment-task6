@@ -51,8 +51,21 @@ jobs:
       - name: Build the Android app
         run: eas build --platform android --profile preview --non-interactive --wait
 
+      - name: Get the build artifact URL
+        id: artifact
+        run: |
+          URL=$(eas build:list --platform android --profile preview --status finished --limit 1 --json --non-interactive | node -e "
+            let data = '';
+            process.stdin.on('data', (chunk) => data += chunk);
+            process.stdin.on('end', () => {
+              const builds = JSON.parse(data);
+              console.log(builds[0].artifacts.applicationArchiveUrl);
+            });
+          ")
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
       - name: Download the build artifact
-        run: eas build:download --platform android --profile preview --output ./volunteam.apk
+        run: curl -L -o ./volunteam.apk "${{ steps.artifact.outputs.url }}"
 
       - name: Attach the build to the GitHub release
         uses: softprops/action-gh-release@v3
