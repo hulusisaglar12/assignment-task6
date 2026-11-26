@@ -4,6 +4,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ...config,
     name: 'volunteam',
     slug: 'volunteam',
+    owner: 'saglar12',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
@@ -33,7 +34,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ],
     extra: {
         eas: {
-            projectId: '954f3b8e-1155-4f8f-8601-a2b3126da39e',
+            projectId: '741f1c51-d0cf-4d57-a543-5fdb9b75a1a9',
         },
         IMGBB_API_KEY: process.env.IMGBB_API_KEY,
     },
