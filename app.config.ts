@@ -20,6 +20,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ios: {
         supportsTablet: true,
     },
+    android: {
+        package: 'com.saglar12.volunteam',
+    },
     web: {
         favicon: './assets/favicon.png',
     },
