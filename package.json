@@ -44,6 +44,9 @@
         "react-native-web": "~0.18.7",
         "uuid": "^9.0.0"
     },
+    "resolutions": {
+        "expo-modules-core": "1.0.3"
+    },
     "devDependencies": {
         "@babel/core": "^7.25.0",
         "@testing-library/react-native": "9.2.0",
